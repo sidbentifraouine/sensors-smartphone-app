@@ -18,7 +18,7 @@ export default class HomeScreen extends React.Component {
   }
 
   SOCKET = io('http://172.20.10.8:3000')
-  UPDATE_INTERVAL = 200
+  UPDATE_INTERVAL = 2000
 
   async componentDidMount() {
     Accelerometer.setUpdateInterval(this.UPDATE_INTERVAL)
