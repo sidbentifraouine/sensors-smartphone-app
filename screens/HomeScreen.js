@@ -17,7 +17,7 @@ export default class HomeScreen extends React.Component {
     header: null
   }
 
-  SOCKET = io('http://172.20.10.8:3000')
+  SOCKET = io('https://8583deff.ngrok.io')
   UPDATE_INTERVAL = 2000
 
   async componentDidMount() {
