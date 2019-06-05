@@ -17,17 +17,40 @@ export default class HomeScreen extends React.Component {
     header: null
   }
 
-  SOCKET = io('http://206c378e.ngrok.io')
-  UPDATE_INTERVAL = 4000
+  state = {
+    Accelerometer: { x: 0, y: 0, z: 0 },
+    Gyroscope: { x: 0, y: 0, z: 0 }
+  }
+
+  SOCKET = io('https://f2903f85.ngrok.io')
+  UPDATE_INTERVAL = 10000
 
   async componentDidMount() {
     Accelerometer.setUpdateInterval(this.UPDATE_INTERVAL)
     Gyroscope.setUpdateInterval(this.UPDATE_INTERVAL)
     Accelerometer.addListener((coordinates) => {
-      this.SOCKET.emit('accelerometer', coordinates)
+      this.setState((prevState) => {
+        this.SOCKET.emit('smartphone', {
+          label: 'Accelerometer',
+          prevValues: prevState.Accelerometer,
+          values: coordinates
+        })
+        return {
+          accelerometer: coordinates
+        }
+      })
     })
     Gyroscope.addListener((coordinates) => {
-      this.SOCKET.emit('gyroscope', coordinates)
+      this.setState((prevState) => {
+        this.SOCKET.emit('smartphone', {
+          label: 'Gyroscope',
+          prevValues: prevState.Gyroscope,
+          values: coordinates
+        })
+        return {
+          Gyroscope: coordinates
+        }
+      })
     })
   }
 
@@ -88,7 +111,7 @@ export default class HomeScreen extends React.Component {
             style={[styles.codeHighlightContainer, styles.navigationFilename]}
           >
             <MonoText style={styles.codeHighlightText}>
-              navigation/MainTabNavigator.js
+              {JSON.stringify(this.state)}
             </MonoText>
           </View>
         </View>
