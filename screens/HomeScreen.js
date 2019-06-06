@@ -22,7 +22,7 @@ export default class HomeScreen extends React.Component {
     Gyroscope: { x: 0, y: 0, z: 0 }
   }
 
-  SOCKET = io('https://f2903f85.ngrok.io')
+  SOCKET = io('https://3bf59d20.ngrok.io')
   UPDATE_INTERVAL = 10000
 
   async componentDidMount() {
@@ -71,42 +71,6 @@ export default class HomeScreen extends React.Component {
               style={styles.welcomeImage}
             />
           </View>
-
-          <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
-
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-
-            <View
-              style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-            >
-              <MonoText style={styles.codeHighlightText}>
-                screens/HomeScreen.js
-              </MonoText>
-            </View>
-
-            <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
-            </Text>
-          </View>
-
-          <View style={styles.helpContainer}>
-            <TouchableOpacity
-              onPress={this._handleHelpPress}
-              style={styles.helpLink}
-            >
-              <Text style={styles.helpLinkText}>
-                Help, it didn’t automatically reload!
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>
-            This is a tab bar. You can edit it in:
-          </Text>
-
           <View
             style={[styles.codeHighlightContainer, styles.navigationFilename]}
           >
@@ -114,7 +78,7 @@ export default class HomeScreen extends React.Component {
               {JSON.stringify(this.state)}
             </MonoText>
           </View>
-        </View>
+        </ScrollView>
       </View>
     )
   }
