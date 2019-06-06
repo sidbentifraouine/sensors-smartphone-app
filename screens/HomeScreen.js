@@ -22,7 +22,7 @@ export default class HomeScreen extends React.Component {
     Gyroscope: { x: 0, y: 0, z: 0 }
   }
 
-  SOCKET = io('https://3bf59d20.ngrok.io')
+  SOCKET = io('https://4e711620.ngrok.io')
   UPDATE_INTERVAL = 10000
 
   async componentDidMount() {
